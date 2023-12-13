@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Run xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.wldelft.nl/fews/PI" xsi:schemaLocation="http://www.wldelft.nl/fews/PI http://fews.wldelft.nl/schemas/version1.0/pi-schemas/pi_run.xsd" version="1.8">
+	<logLevel>info</logLevel>
+	<timeZone>0.0</timeZone>
+	<startDateTime date="2022-02-19" time="20:00:00"/>
+	<endDateTime date="2022-05-25" time="21:00:00"/>
+	<time0 date="2022-01-20" time="08:00:00"/>
+	<lastObservationDateTime date="2023-01-20" time="08:00:00"/>
+	<workDir>c:\test\sentinel_download_test</workDir>
+	<outputDiagnosticFile>C:\FEWS\202002NA\FEWS_TransAlta_Test\Modules\pyscripts\work\diag.xml</outputDiagnosticFile>
+	<properties>
+		<string key="destinationDir" value="c:\test\sentinel_download_test\sentinel2_test"/>
+		<string key="user" value="tycho.bovenschen@deltares.nl"/>
+		<string key="secret" value="TestSentinel123!"/>
+		<string key="mission" value="SENTINEL-1"/>
+		<string key="unzip" value="False"/>
+		<string key="download_type" value="ingestion"/>
+		<string key="product_type" value="GRD"/>
+		<string key="product_mode" value="IW"/>
+	</properties>
+</Run>
