@@ -112,9 +112,9 @@ class SentinelClient:
     def search_products(self, config):
         """Search the Copernicus dataspace for images according to the filters"""
         if config.download_type == "ingestion":
-            date_type = "ContentDate/Start"
-        elif config.download_type == " acquisition":
             date_type = "PublicationDate"
+        elif config.download_type == "acquisition":
+            date_type = "ContentDate/Start"
         else:
             logging.error("Choose one of acquistion or ingestion for the download_type")
             raise ValueError(
@@ -125,6 +125,7 @@ class SentinelClient:
                 response = self.session.get(
                     f"https://catalogue.dataspace.copernicus.eu/odata/v1/Products?$filter=Collection/Name eq '{config.mission}' "
                     f"and contains(Name,'_{config.product_mode}_') "
+                    f"and contains(Name,'1SDV') "
                     f"and OData.CSC.Intersects(area=geography'SRID=4326;{config.geometry.wkt}') and {date_type} gt {config.start_time} "
                     f"and {date_type} lt {config.end_time} and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' "
                     f"and att/OData.CSC.StringAttribute/Value eq '{config.product_type}')&$top=100"
@@ -165,12 +166,12 @@ class SentinelClient:
     def download_products(self, config):
         """Download the images found"""
         try:
-            keycloak_token = self.get_keycloak(config)
-            logging.debug("Token generated")
             sentinel_products = self.search_products(config)
             product_ids = [product.id for product in sentinel_products]
             product_names = [product.name for product in sentinel_products]
-
+            if sentinel_products:
+                keycloak_token = self.get_keycloak(config)
+                logging.debug("Token generated")
             for product_id, product_name in zip(product_ids, product_names):
                 self.session.headers.update(
                     {"Authorization": f"Bearer {keycloak_token}"}
