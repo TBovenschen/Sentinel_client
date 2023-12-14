@@ -118,7 +118,7 @@ class SentinelClient:
         else:
             logging.error("Choose one of acquistion or ingestion for the download_type")
             raise ValueError(
-                "Choose one of acquistion or ingestion for the download_type"
+                "Choose one of acquisition or ingestion for the download_type"
             )
         try:
             if config.mission == "SENTINEL-1":

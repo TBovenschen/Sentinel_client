@@ -14,7 +14,7 @@
 		<string key="secret" value="TestSentinel123!"/>
 		<string key="mission" value="SENTINEL-1"/>
 		<string key="unzip" value="False"/>
-		<string key="download_type" value="ingestion"/>
+		<string key="download_type" value="acquisition"/>
 		<string key="product_type" value="GRD"/>
 		<string key="product_mode" value="IW"/>
 	</properties>
