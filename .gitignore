@@ -19,7 +19,6 @@ __pycache__/
 *.la
 *.a
 *.lib
-*.exe
 *.out
 *.app
 
@@ -28,7 +27,6 @@ __pycache__/
 env/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
